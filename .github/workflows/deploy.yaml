@@ -16,6 +16,10 @@ jobs:
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 
+      - name: Debug AWS Secrets
+        run: |
+          echo "AWS Access Key Length: ${#AWS_ACCESS_KEY_ID}"
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
